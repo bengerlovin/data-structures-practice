@@ -124,8 +124,41 @@ class LinkedList {
         return elements;
     }
 
+    toArrayWithNode(node) {
+
+        const elements = [];
+
+        let curNode = node;
+        while (curNode) {
+            elements.push(curNode)
+            curNode = curNode.next;
+        }
+
+        return elements;
+
+    }
+
+    reverse(node) {
+        let prev = null;
+        let current = node;
+
+        while (current !== null) {
+            let next = current.next
+            current.next = prev;
+
+            // move prev and current pointers up by one
+            prev = current
+            current = next;
+        }
+
+        return prev;
+    }
+
+
+
 
 }
+
 
 module.exports = LinkedList
 
