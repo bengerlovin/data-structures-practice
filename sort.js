@@ -43,13 +43,58 @@ function mergeSort(array) {
         return array
     }
 
+
     const left = array.splice(0, half) // changes array - takes from 0 through to half index inclusive, leaves array as "right" half
     return merge(mergeSort(left), mergeSort(array))
 }
 
-console.log(mergeSort([4, 8, 7, 2, 11, 1, 3]))
+// console.log(mergeSort([4, 8, 7, 2, 11, 1, 3]))
 
 
 
 
 // quick sort
+
+
+// findMinimumWindow
+
+function findMinimumWindow(arr) {
+
+    let leftPointer = 0
+    let rightPointer = arr.length - 1;
+
+    while (arr[leftPointer] < arr[leftPointer + 1] && leftPointer < arr.length - 1) {
+        leftPointer++;
+    }
+
+    // base case - left pointer made it to the end
+    if (leftPointer == arr.length - 1) return 0;
+
+    while (arr[rightPointer] > arr[rightPointer - 1] && rightPointer >= 0) {
+        rightPointer--;
+    }
+
+    let subArray = arr.slice(leftPointer, rightPointer + 1)
+
+    let subMin = Math.min(...subArray)
+    let subMax = Math.max(...subArray)
+
+
+    // extend window to the left, checking if element is greater than min
+    // extend window to the right, checking if element is less than max
+
+    while (arr[leftPointer - 1] > subMin && leftPointer > 0) {
+        leftPointer--;
+    }
+
+    while (arr[rightPointer + 1] < subMax && rightPointer < arr.length - 1) {
+        rightPointer++;
+    }
+
+    return rightPointer - leftPointer + 1;
+
+
+
+}
+
+console.log(findMinimumWindow([1, 3, 2, 0, -1, 7, 10])) //5
