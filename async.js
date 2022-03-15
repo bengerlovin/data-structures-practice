@@ -29,22 +29,3 @@ async function step2() {
     console.log("step 2 handled");
 } // step2() 
 
-// async function addTenAndReturnNumber(number) {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve(number + 10)
-//         }, 1000)
-//     })
-// }
-
-// (async function () {
-//     // notice that we have to mark the callback function as async too
-//     // map((number) => {...}) will throw an "Unexpected Token" error on the await keyword
-
-//     const result = [41, 42, 43].map(async (number) => {
-//         return await addTenAndReturnNumber(number)
-//     })
-
-//     let results = await Promise.all(result);
-//     console.log(results)
-// })()

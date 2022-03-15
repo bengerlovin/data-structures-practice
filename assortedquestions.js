@@ -64,3 +64,26 @@ function printPerson(name, age, occupation, taxrate) {
 
 // if we pass a tax rate of 0  - which is a valid tax rate - unless we check for null or undefined it will take 0 as a falsy value
 
+
+// bind call and apply
+var cat = {
+    breed: "calico",
+    immutable: 'immutable property',
+    petTheKitty: function (greeting) {
+        return `first, our immutable: ${this.immutable}, then we say hello kitty, you're a ${this.breed}, and to you I say: ${greeting}`
+    }
+}
+
+let petFunction = cat.petTheKitty.bind({ breed: 'longhair' })
+console.log(petFunction('i love cats!!'))
+
+// call and apply equivalents
+console.log(cat.petTheKitty.call({ breed: 'shorthair' }, 'greetings from call'))
+console.log(cat.petTheKitty.apply({ breed: 'apply breed' }, ['hello greeting from apply'])) // pass this context, then array like arguments
+
+
+
+
+// bind and apply return results
+// bind -> returns function with bound this, which was passed as an argument
+// apply returns result from executing function, and so does call
